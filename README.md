@@ -1,8 +1,9 @@
 # Chobang
+## 사회초년생들을 위한 저렴한 월세방 구하기 프로젝트
 
+- 프론트 배포 링크 -> https://test
+- 백 배포 링크 -> https://test
 - 
-- 프론트 배포 링크 -> https://everyworld-clone.vercel.app/
-
 # 기술스택
 <div display="flex">
 <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white">
