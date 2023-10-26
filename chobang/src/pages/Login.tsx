@@ -7,22 +7,31 @@ import LoginHead from "../components/login/LoginHead";
 import Button from "../components/ui/Button";
 
 const Login = () => {
+  const test = useRef<HTMLInputElement>("");
+  const emailtest = () => {};
   return (
     <Container width="500px" flexDirection="column">
       <LoginHead />
       <S.inputBox>
         <label>이메일</label>
+
         <Input placeholder="이메일을 입력해주세요" width={"100%"}></Input>
       </S.inputBox>
       <S.inputBox>
         <label>비밀번호</label>
-        <Input placeholder="비밀번호를 입력해주세요" width={"100%"}></Input>
+
+        <input type="text" ref={test} />
+        <Input
+          type="password"
+          placeholder="비밀번호를 입력해주세요"
+          width={"100%"}
+        ></Input>
       </S.inputBox>
 
       <Button
         width="100%"
         onClick={() => {
-          console.log("로그인");
+          console.log(test.current?.value);
         }}
       >
         로그인하기

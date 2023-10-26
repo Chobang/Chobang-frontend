@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useState, useRef } from "react";
 
 type propsType = {
   placeholder?: string;
@@ -12,6 +12,7 @@ type propsType = {
 /** input의 넓이와 높이를 입력이 가능하며 placeholder 전달가능 */
 const Input = (props: propsType) => {
   const [isClick, setIsClick] = useState<boolean>(false);
+  const value = useRef<HTMLInputElement>(null);
 
   const isClickHandler = (
     e: React.MouseEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>
@@ -19,9 +20,11 @@ const Input = (props: propsType) => {
     if (e.type === "focus") setIsClick(true);
     if (e.type === "blur") setIsClick(false);
   };
+
   return (
     <>
       <InputTag
+        ref={value}
         type={props.type}
         placeholder={props.placeholder}
         width={props.width}
