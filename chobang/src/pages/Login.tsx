@@ -1,17 +1,24 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Container from "../components/ui/Container";
 import Input from "../components/ui/Input";
 import * as S from "./Login.style";
 import kakaologiniamge from "../assets/kakao_login_large_wide.png";
 import LoginHead from "../components/login/LoginHead";
 import Button from "../components/ui/Button";
+import useEmailValidationCheck from "../hooks/useValidationCheck";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
+  const LoginHandler = () => {
+    const email = emailRef.current?.value;
+    useEmailValidationCheck(email);
+  };
+
   return (
-    <Container width="500px" flexDirection="column">
+    <Container width="500px" flexdirection="column">
       <LoginHead />
       <S.inputBox>
         <label>이메일</label>
@@ -31,17 +38,17 @@ const Login = () => {
           width={"100%"}
         ></Input>
       </S.inputBox>
-
-      <Button
-        width="100%"
-        onClick={() => {
-          console.log("이메일:", emailRef.current?.value);
-          console.log("비밀번호:", passwordRef.current?.value);
-        }}
-      >
-        로그인하기
-      </Button>
-      <S.ImgDiv marginTop="1rem">
+      <div style={{ marginTop: "1rem" }}>
+        <Button width="100%" onClick={LoginHandler}>
+          로그인하기
+        </Button>
+      </div>
+      <div style={{ marginTop: "2rem" }}>
+        <Link to="signup">
+          <Button width="100%">회원가입하기</Button>
+        </Link>
+      </div>
+      <S.ImgDiv margintop="2rem">
         <img src={kakaologiniamge} alt="kakao login" />
       </S.ImgDiv>
     </Container>

@@ -1,12 +1,16 @@
-const useEmailValidationCheck = (data: string) => {
-  const email: string = data.trim();
-
-  //토스트메시지 체크
-
-  if (email.includes("@")) {
-    return 0;
+const useEmailValidationCheck = (data: string | undefined) => {
+  if (data) {
+    const email: string = data.trim();
+    if (email.includes("@")) {
+      console.log("우효 ㅋㅋ @ ㅋ있쥬 ");
+      if (email.split(".")[1]) {
+        console.log(email.split(".")[0]);
+        console.log(email.split(".")[1]);
+      }
+    }
+  } else {
+    console.log("data가 undefined입니다.");
   }
-  return;
 };
 
 export default useEmailValidationCheck;

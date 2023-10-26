@@ -9,11 +9,11 @@ export const inputBox = styled.div`
   grid-template-columns: 3fr 10fr;
 `;
 /** 이미지상자임 */
-export const ImgDiv = styled.div<{ marginTop?: string }>`
+export const ImgDiv = styled.div<{ margintop?: string }>`
   width: 100%;
   object-fit: cover;
   cursor: pointer;
-  margin-top: ${(props) => (props.marginTop ? props.marginTop : 0)};
+  margin-top: ${(props) => (props.margintop ? props.margintop : 0)};
   img {
     width: 100%;
   }

@@ -4,7 +4,7 @@ import * as S from "./Container.style";
 type propsType = {
   children: ReactNode;
   width?: string | number;
-  flexDirection?: string;
+  flexdirection?: string;
 };
 
 /** div태그를 쓴 display: flex 속성의 컨테이너,
@@ -13,7 +13,7 @@ type propsType = {
  * flexDirection속성은*/
 const Container = (props: propsType) => {
   return (
-    <S.Containerbox width={props.width} flexDirection={props.flexDirection}>
+    <S.Containerbox width={props.width} flexdirection={props.flexdirection}>
       {props.children}
     </S.Containerbox>
   );

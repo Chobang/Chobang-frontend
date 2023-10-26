@@ -5,10 +5,10 @@ type propsType = {
   type?: string;
   width?: string | number;
   height?: string | number;
-  isClick?: boolean;
   children?: ReactNode;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   inputRef?: React.RefObject<HTMLInputElement>; //
+  value?: string | (() => void);
 };
 
 /** input의 넓이와 높이를 입력이 가능하며 placeholder 전달가능 */
@@ -25,15 +25,16 @@ const Input = (props: propsType) => {
   return (
     <>
       <InputTag
-        ref={props.inputRef} // ref 설정
+        ref={props.inputRef}
         onChange={props.onChange}
         type={props.type}
         placeholder={props.placeholder}
         width={props.width}
         height={props.height}
+        value={props.value}
         onFocus={isClickHandler}
         onBlur={isClickHandler}
-        isClick={isClick}
+        $isclick={isClick}
       />
     </>
   );
@@ -43,7 +44,7 @@ export default Input;
 
 import styled from "styled-components";
 
-const InputTag = styled.input<{ isClick?: boolean }>`
+const InputTag = styled.input<{ $isclick: boolean }>`
   box-sizing: border-box;
   padding: 0;
   outline: none;
@@ -52,5 +53,5 @@ const InputTag = styled.input<{ isClick?: boolean }>`
   text-indent: 5%;
   width: ${(props) => (props.width ? props.width : "250px")};
   height: ${(props) => (props.height ? props.height : "50px")};
-  border: ${(props) => (props.isClick ? "3px solid aqua" : "1px solid black")};
+  border: ${(props) => (props.$isclick ? "3px solid aqua" : "1px solid black")};
 `;
