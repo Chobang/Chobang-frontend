@@ -7,21 +7,25 @@ import LoginHead from "../components/login/LoginHead";
 import Button from "../components/ui/Button";
 
 const Login = () => {
-  const test = useRef<HTMLInputElement>("");
-  const emailtest = () => {};
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
   return (
     <Container width="500px" flexDirection="column">
       <LoginHead />
       <S.inputBox>
         <label>이메일</label>
-
-        <Input placeholder="이메일을 입력해주세요" width={"100%"}></Input>
+        <Input
+          inputRef={emailRef}
+          placeholder="이메일을 입력해주세요"
+          width={"100%"}
+        ></Input>
       </S.inputBox>
       <S.inputBox>
         <label>비밀번호</label>
 
-        <input type="text" ref={test} />
         <Input
+          inputRef={passwordRef}
           type="password"
           placeholder="비밀번호를 입력해주세요"
           width={"100%"}
@@ -31,7 +35,8 @@ const Login = () => {
       <Button
         width="100%"
         onClick={() => {
-          console.log(test.current?.value);
+          console.log("이메일:", emailRef.current?.value);
+          console.log("비밀번호:", passwordRef.current?.value);
         }}
       >
         로그인하기

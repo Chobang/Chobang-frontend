@@ -1,4 +1,4 @@
-import { ReactNode, useState, useRef } from "react";
+import { ChangeEvent, ReactNode, useState } from "react";
 
 type propsType = {
   placeholder?: string;
@@ -7,12 +7,13 @@ type propsType = {
   height?: string | number;
   isClick?: boolean;
   children?: ReactNode;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  inputRef?: React.RefObject<HTMLInputElement>; //
 };
 
 /** input의 넓이와 높이를 입력이 가능하며 placeholder 전달가능 */
 const Input = (props: propsType) => {
   const [isClick, setIsClick] = useState<boolean>(false);
-  const value = useRef<HTMLInputElement>(null);
 
   const isClickHandler = (
     e: React.MouseEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>
@@ -24,7 +25,8 @@ const Input = (props: propsType) => {
   return (
     <>
       <InputTag
-        ref={value}
+        ref={props.inputRef} // ref 설정
+        onChange={props.onChange}
         type={props.type}
         placeholder={props.placeholder}
         width={props.width}
